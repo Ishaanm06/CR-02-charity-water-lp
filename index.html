@@ -3,10 +3,324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Charity: Water Landing Page</title>
+    <!-- Google Fonts for Avenir substitute (Avenir is not on Google Fonts, so we'll use system fallback) -->
+    <style>
+        /* Use a soft background color for the whole page */
+        body {
+            line-height: 1.6;
+            background-color: #f6fafd; /* Light blue background for the top */
+            color: #333;
+            font-family: Avenir, Arial, sans-serif; /* Use Avenir for most text */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Change the background color below the hero image */
+        .main-content-bg {
+            background-color: #8BD1CB; /* Light Blue for sections below hero */
+            padding-top: 1px; /* Small padding to ensure background shows */
+            min-height: 100vh; /* Make sure it covers the content */
+        }
+
+        /* Header styles */
+        header {
+            background-color: #fdf3dc;
+            padding: 0.5em 1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            height: 60px;
+            overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04); /* Soft shadow for depth */
+        }
+
+        .logo {
+            margin-left: 0;
+        }
+
+        .logo img {
+            height: 200px;
+            width: auto;
+            margin-top: -70px;
+            margin-bottom: -70px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5em; /* More space between nav items */
+        }
+
+        /* Navigation buttons are now black and use Avenir */
+        nav ul li a {
+            text-decoration: none;
+            color: #000; /* Black color for nav buttons */
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.2s;
+            font-family: Avenir, Arial, sans-serif; /* Use Avenir for nav links */
+        }
+
+        nav ul li a:hover {
+            color: #FFC907; /* Highlight on hover */
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+        }
+
+        /* Hero section styles */
+        .hero {
+            background-image: url('img/backgroundimg.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            color: white;
+            text-align: left;
+            padding: 10em 2em;
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Slightly lighter overlay */
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            background: rgba(255,255,255,0.10); /* Subtle white overlay for readability */
+            padding: 2em;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+
+        /* Headline uses Proxima Nova */
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-shadow: 1px 2px 8px rgba(0,0,0,0.18); /* Soft shadow for contrast */
+            font-family: 'Proxima Nova', Arial, sans-serif; /* Headline font */
+        }
+
+        /* Subheadline uses Avenir */
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            text-shadow: 1px 2px 8px rgba(0,0,0,0.12);
+            font-family: Avenir, Arial, sans-serif; /* Subheadline font */
+        }
+
+        .cta-button {
+            background-color: #FFC907;
+            color: #000;
+            border: none;
+            padding: 0.9em 2em;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            transition: background 0.2s, color 0.2s;
+            font-family: Avenir, Arial, sans-serif; /* Button font */
+        }
+
+        .cta-button:hover {
+            background-color: #2E9DF7;
+            color: #fff;
+        }
+
+        /* Content section styles */
+        section.content {
+            padding: 4em 2em;
+            text-align: center;
+            background: #fff;
+            margin: 2em auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(46,157,247,0.06);
+            max-width: 900px;
+            font-family: Avenir, Arial, sans-serif; /* Content font */
+        }
+
+        section.content h2 {
+            font-size: 2.3em;
+            margin-bottom: 0.5em;
+            color: #2E9DF7;
+            letter-spacing: 1px;
+            font-family: Avenir, Arial, sans-serif; /* Section heading font */
+        }
+
+        section.content p {
+            max-width: 800px;
+            margin: 0.8em auto;
+            font-size: 1.15em;
+            color: #555;
+            line-height: 1.7;
+            font-family: Avenir, Arial, sans-serif; /* Section paragraph font */
+        }
+
+        .content:nth-of-type(even) {
+            background-color: #f1f9ff;
+        }
+
+        /* Footer styles for the bottom of the page */
+        footer {
+            background-color: #000; /* Black background */
+            color: #fff;            /* White text */
+            text-align: center;     /* Center the text */
+            padding: 1.5em 1em;     /* Space inside the footer */
+            font-family: Avenir, Arial, sans-serif; /* Use Avenir for footer text */
+            margin-top: 2em;        /* Space above the footer */
+        }
+        /* Make footer links white */
+        footer a {
+            color: #fff;
+            text-decoration: underline;
+        }
+        footer a:hover {
+            color: #FFC907; /* Yellow on hover for visibility */
+        }
+
+        /* Responsive styles for mobile */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #fdf3dc;
+                padding: 1em;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                padding: 6em 1em;
+                min-height: 300px;
+            }
+
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero-content {
+                padding: 1em;
+            }
+
+            section.content {
+                padding: 2em 1em;
+            }
+        }
+    </style>
+    <script>
+        // This function shows or hides the navigation menu on small screens
+        function toggleMenu() {
+            const nav = document.querySelector("nav");
+            nav.classList.toggle("active");
+        }
+    </script>
 </head>
 <body>
-    <!-- Add your HTML here -->
+<header>
+    <div class="logo">
+        <!-- Use the logo image from the img folder -->
+        <img src="img/cwlogo.png" alt="Charity: Water Logo">
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <!-- Headline without the emoji for a clean look -->
+        <h1>Empower Communities,<br>One Drop at a Time</h1>
+        <p>Your donation sparks real change—and your journey as a future world-changer starts now.</p>
+        <a href="#donate" class="cta-button">Pitch In Today</a>
+    </div>
+</section>
+
+<!-- Add a wrapper div for the main content below the hero -->
+<div class="main-content-bg">
+    <section class="content" id="about">
+        <h2>🌍 About Us</h2>
+        <!-- This paragraph explains the mission -->
+        <p>We are on a mission to bring clean and safe drinking water to every person on the planet. 100% of public donations fund clean water projects. Join us in transforming lives, one well at a time.</p>
+        <!-- Add more beginner-friendly info about the organization -->
+        <p>Our team works with local partners to find the best solutions for each community. We believe everyone deserves access to clean water, and we are committed to making that a reality. Every project is tracked and reported, so you can see the impact of your support.</p>
+        <p>Since we started, we have helped thousands of communities get access to safe water. We invite you to learn more about our story and join our growing family of supporters.</p>
+    </section>
+
+    <section class="content" id="projects">
+        <h2>🚰 Our Projects</h2>
+        <!-- This paragraph explains the types of projects -->
+        <p>From hand-dug wells to rainwater catchments, we partner with local experts to build sustainable solutions tailored to each community. With every completed project, a new chapter of hope begins.</p>
+        <!-- Add more beginner-friendly info about the projects -->
+        <p>We use different methods to bring water to people, depending on what works best in each area. Some projects use wells, while others use pumps or special filters. We also teach communities how to take care of their new water sources, so they last for many years.</p>
+        <p>Our projects are designed to be safe for children and easy for families to use. We share updates and photos from the field, so you can see the difference your support makes.</p>
+    </section>
+
+    <section class="content" id="contact">
+        <h2>📬 Contact Us</h2>
+        <!-- This paragraph explains how to get in touch -->
+        <p>Have questions or want to contribute your time or resources? Reach out to become part of this life-changing movement. Let’s bring clean water and bright futures to all.</p>
+        <!-- Add more beginner-friendly info about contacting -->
+        <p>You can email us at <a href="mailto:info@charitywater.org">info@charitywater.org</a> or fill out our contact form on the website. We love hearing from new friends and supporters!</p>
+        <p>If you want to volunteer, donate, or just learn more, our team is here to help. Together, we can make a big difference—one drop at a time.</p>
+    </section>
+</div>
+
+<!-- Footer section starts here -->
+<footer>
+    <!-- Contact information in the footer -->
+    <p>Contact us: <a href="mailto:info@charitywater.org">info@charitywater.org</a> | &copy; 2025 Charity: Water</p>
+</footer>
 </body>
 </html>
