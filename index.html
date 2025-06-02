@@ -3,10 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Charity: Water Landing Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Avenir&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Avenir', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: #fdfdfd;
+            color: #333;
+        }
+
+        header {
+            background-color: #fdf3dc;
+            padding: 1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1em;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+        }
+
+        .hero {
+            background: url('/mnt/data/Malawi_2023_CG-3108.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: left;
+            padding: 10em 2em;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 1em;
+        }
+
+        .cta-button {
+            background-color: #FFC907;
+            color: #000;
+            border: none;
+            padding: 0.75em 1.5em;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        section.content {
+            padding: 4em 2em;
+            text-align: center;
+        }
+
+        section.content h2 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+            color: #2E9DF7;
+        }
+
+        section.content p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .content:nth-of-type(even) {
+            background-color: #f1f9ff;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #fdf3dc;
+                padding: 1em;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                padding: 6em 1em;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector("nav");
+            nav.classList.toggle("active");
+        }
+    </script>
 </head>
 <body>
-    <!-- Add your HTML here -->
+<header>
+    <div class="logo">
+        <img src="/mnt/data/charitywater_logo_horizontal_AllBlack.png" alt="Charity: Water Logo">
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Empower Communities,<br>One Drop at a Time 💧</h1>
+        <p>Your donation sparks real change—and your journey as a future world-changer starts now.</p>
+        <a href="#donate" class="cta-button">Pitch In Today</a>
+    </div>
+</section>
+
+<section class="content" id="about">
+    <h2>🌍 About Us</h2>
+    <p>We are on a mission to bring clean and safe drinking water to every person on the planet. 100% of public donations fund clean water projects. Join us in transforming lives, one well at a time.</p>
+</section>
+
+<section class="content" id="projects">
+    <h2>🚰 Our Projects</h2>
+    <p>From hand-dug wells to rainwater catchments, we partner with local experts to build sustainable solutions tailored to each community. With every completed project, a new chapter of hope begins.</p>
+</section>
+
+<section class="content" id="contact">
+    <h2>📬 Contact Us</h2>
+    <p>Have questions or want to contribute your time or resources? Reach out to become part of this life-changing movement. Let’s bring clean water and bright futures to all.</p>
+</section>
 </body>
 </html>
